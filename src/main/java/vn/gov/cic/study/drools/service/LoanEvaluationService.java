@@ -24,4 +24,8 @@ public class LoanEvaluationService {
     public EvaluationResult getLastResult(String requestId) {
         return cache.get(requestId);
     }
+
+    public int reloadRules() {
+        return ruleEngine.reloadRules();
+    }
 }

@@ -34,6 +34,12 @@ public class DroolsRuleEngine {
         }
     }
 
+    public synchronized int reloadRules() {
+        int cachedRuleSets = cachedContainers.size();
+        cachedContainers.clear();
+        return cachedRuleSets;
+    }
+
     private KieContainer getContainer(RuleSet ruleSet) {
         return cachedContainers.computeIfAbsent(ruleSet, this::compileRule);
     }

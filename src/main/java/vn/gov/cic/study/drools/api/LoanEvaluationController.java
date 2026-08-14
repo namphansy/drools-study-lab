@@ -1,6 +1,7 @@
 package vn.gov.cic.study.drools.api;
 
 import jakarta.validation.Valid;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,14 @@ public class LoanEvaluationController {
     @GetMapping("/evaluate/{requestId}/last")
     public EvaluationResult getLastResult(@PathVariable String requestId) {
         return evaluationService.getLastResult(requestId);
+    }
+
+    @PostMapping("/rules/reload")
+    public Map<String, Object> reloadRules() {
+        int clearedRuleSets = evaluationService.reloadRules();
+        return Map.of(
+                "reloaded", true,
+                "clearedRuleSets", clearedRuleSets
+        );
     }
 }
