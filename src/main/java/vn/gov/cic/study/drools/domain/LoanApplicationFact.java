@@ -26,6 +26,9 @@ public class LoanApplicationFact {
     @Min(0)
     private int creditScore;
 
+    @Min(0)
+    private int employmentMonths;
+
     private boolean hasExistingBadDebt;
 
     private final List<String> violations = new ArrayList<>();
@@ -76,6 +79,14 @@ public class LoanApplicationFact {
 
     public void setCreditScore(int creditScore) {
         this.creditScore = creditScore;
+    }
+
+    public int getEmploymentMonths() {
+        return employmentMonths;
+    }
+
+    public void setEmploymentMonths(int employmentMonths) {
+        this.employmentMonths = employmentMonths;
     }
 
     public boolean isHasExistingBadDebt() {

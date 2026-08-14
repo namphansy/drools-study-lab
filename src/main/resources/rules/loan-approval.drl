@@ -26,6 +26,13 @@ then
     $loan.reject("LOW_CREDIT_SCORE: credit score must be at least 600");
 end
 
+rule "Reject short employment history"
+when
+    $loan : LoanApplicationFact(employmentMonths < 6)
+then
+    $loan.reject("SHORT_EMPLOYMENT: employment history must be at least 6 months");
+end
+
 rule "Reject loan amount over simple affordability threshold"
 when
     $loan : LoanApplicationFact(loanAmount > maxAffordableLoan)

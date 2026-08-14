@@ -5,5 +5,6 @@
   "monthlyIncome": 8000000,
   "loanAmount": 300000000,
   "creditScore": 540,
+  "employmentMonths": 3,
   "hasExistingBadDebt": false
 }
