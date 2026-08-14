@@ -1,0 +1,34 @@
+package vn.gov.cic.study.drools.rules
+
+import vn.gov.cic.study.drools.domain.LoanApplicationFact;
+
+rule "Reject applicant under 22 years old"
+    salience 30
+when
+    $loan : LoanApplicationFact(age < 22)
+then
+    $loan.reject("AGE_TOO_LOW: applicant must be at least 22 years old");
+end
+
+rule "Reject bad debt"
+    salience 20
+when
+    $loan : LoanApplicationFact(hasExistingBadDebt == true)
+then
+    $loan.reject("BAD_DEBT: applicant has existing bad debt");
+end
+
+rule "Reject low credit score"
+    salience 10
+when
+    $loan : LoanApplicationFact(creditScore < 600)
+then
+    $loan.reject("LOW_CREDIT_SCORE: credit score must be at least 600");
+end
+
+rule "Reject loan amount over simple affordability threshold"
+when
+    $loan : LoanApplicationFact(loanAmount > maxAffordableLoan)
+then
+    $loan.reject("LOAN_TOO_HIGH: loan amount is greater than 24 months of income");
+end

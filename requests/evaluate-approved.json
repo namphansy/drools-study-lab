@@ -1,0 +1,9 @@
+{
+  "requestId": "REQ-002",
+  "applicantName": "Tran Thi B",
+  "age": 30,
+  "monthlyIncome": 25000000,
+  "loanAmount": 200000000,
+  "creditScore": 720,
+  "hasExistingBadDebt": false
+}

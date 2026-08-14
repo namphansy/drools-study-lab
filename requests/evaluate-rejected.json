@@ -1,0 +1,9 @@
+{
+  "requestId": "REQ-001",
+  "applicantName": "Nguyen Van A",
+  "age": 20,
+  "monthlyIncome": 8000000,
+  "loanAmount": 300000000,
+  "creditScore": 540,
+  "hasExistingBadDebt": false
+}

@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: drools-study-lab
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+study:
+  drools:
+    rule-path: rules/loan-approval.drl
