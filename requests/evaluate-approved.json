@@ -6,5 +6,6 @@
   "loanAmount": 200000000,
   "creditScore": 720,
   "employmentMonths": 24,
+  "ruleSet": "STANDARD",
   "hasExistingBadDebt": false
 }

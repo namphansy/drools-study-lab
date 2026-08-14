@@ -29,6 +29,8 @@ public class LoanApplicationFact {
     @Min(0)
     private int employmentMonths;
 
+    private RuleSet ruleSet = RuleSet.STANDARD;
+
     private boolean hasExistingBadDebt;
 
     private final List<String> violations = new ArrayList<>();
@@ -89,6 +91,14 @@ public class LoanApplicationFact {
         this.employmentMonths = employmentMonths;
     }
 
+    public RuleSet getRuleSet() {
+        return ruleSet;
+    }
+
+    public void setRuleSet(RuleSet ruleSet) {
+        this.ruleSet = ruleSet == null ? RuleSet.STANDARD : ruleSet;
+    }
+
     public boolean isHasExistingBadDebt() {
         return hasExistingBadDebt;
     }
@@ -107,5 +117,9 @@ public class LoanApplicationFact {
 
     public BigDecimal getMaxAffordableLoan() {
         return monthlyIncome.multiply(BigDecimal.valueOf(24));
+    }
+
+    public BigDecimal getHighRiskMaxAffordableLoan() {
+        return monthlyIncome.multiply(BigDecimal.valueOf(12));
     }
 }

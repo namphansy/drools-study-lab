@@ -1,0 +1,42 @@
+package vn.gov.cic.study.drools.rules
+
+import vn.gov.cic.study.drools.domain.LoanApplicationFact;
+
+rule "High risk reject applicant under 25 years old"
+    salience 40
+when
+    $loan : LoanApplicationFact(age < 25)
+then
+    $loan.reject("HIGH_RISK_AGE_TOO_LOW: applicant must be at least 25 years old");
+end
+
+rule "High risk reject bad debt"
+    salience 30
+when
+    $loan : LoanApplicationFact(hasExistingBadDebt == true)
+then
+    $loan.reject("HIGH_RISK_BAD_DEBT: applicant has existing bad debt");
+end
+
+rule "High risk reject low credit score"
+    salience 20
+when
+    $loan : LoanApplicationFact(creditScore < 700)
+then
+    $loan.reject("HIGH_RISK_LOW_CREDIT_SCORE: credit score must be at least 700");
+end
+
+rule "High risk reject short employment history"
+    salience 10
+when
+    $loan : LoanApplicationFact(employmentMonths < 12)
+then
+    $loan.reject("HIGH_RISK_SHORT_EMPLOYMENT: employment history must be at least 12 months");
+end
+
+rule "High risk reject loan amount over strict affordability threshold"
+when
+    $loan : LoanApplicationFact(loanAmount > highRiskMaxAffordableLoan)
+then
+    $loan.reject("HIGH_RISK_LOAN_TOO_HIGH: loan amount is greater than 12 months of income");
+end

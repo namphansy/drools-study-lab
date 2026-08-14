@@ -15,7 +15,7 @@ public class LoanEvaluationService {
     private final EvaluationCache cache;
 
     public EvaluationResult evaluate(LoanApplicationFact request) {
-        int firedRules = ruleEngine.evaluate(request);
+        int firedRules = ruleEngine.evaluate(request, request.getRuleSet());
         EvaluationResult result = EvaluationResult.from(request, firedRules);
         cache.save(result);
         return result;
