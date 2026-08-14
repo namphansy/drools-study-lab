@@ -1,0 +1,3 @@
+{
+  "expression": "age >= 22 AND creditScore >= 600"
+}
