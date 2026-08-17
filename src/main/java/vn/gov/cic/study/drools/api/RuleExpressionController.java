@@ -25,6 +25,21 @@ public class RuleExpressionController {
         return new RuleExpressionParseResponse("Parse OK", request.expression());
     }
 
+    @PostMapping("/generate-drl")
+    public RuleExpressionGenerateResponse generateDrl(@Valid @RequestBody RuleExpressionGenerateRequest request) {
+        RuleExpressionParseService.GeneratedDrl generatedDrl = parseService.generateDrl(
+                request.ruleName(),
+                request.salience(),
+                request.expression(),
+                request.message()
+        );
+        return new RuleExpressionGenerateResponse(
+                request.expression(),
+                generatedDrl.condition(),
+                generatedDrl.rule()
+        );
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public RuleExpressionParseError handleParseError(IllegalArgumentException ex) {
@@ -36,9 +51,24 @@ public class RuleExpressionController {
     ) {
     }
 
+    public record RuleExpressionGenerateRequest(
+            @NotBlank String ruleName,
+            int salience,
+            @NotBlank String expression,
+            @NotBlank String message
+    ) {
+    }
+
     public record RuleExpressionParseResponse(
             String result,
             String expression
+    ) {
+    }
+
+    public record RuleExpressionGenerateResponse(
+            String expression,
+            String condition,
+            String rule
     ) {
     }
 

@@ -1,0 +1,6 @@
+{
+  "ruleName": "Reject generated low eligibility",
+  "salience": 10,
+  "expression": "age >= 22 AND creditScore >= 600",
+  "message": "GENERATED_RULE: applicant matches generated eligibility expression"
+}
