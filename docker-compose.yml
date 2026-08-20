@@ -16,8 +16,11 @@ services:
     environment:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
+      STUDY_DROOLS_RULE_DIRECTORY: /app/rules
     ports:
       - "8080:8080"
+    volumes:
+      - ./src/main/resources/rules:/app/rules
 
 volumes:
   redis-data:
