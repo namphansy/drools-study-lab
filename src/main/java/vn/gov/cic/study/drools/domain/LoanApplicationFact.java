@@ -28,6 +28,16 @@ public class LoanApplicationFact {
 
     private boolean hasExistingBadDebt;
 
+    private int employmentMonths;
+
+    public int getEmploymentMonths() {
+        return employmentMonths;
+    }
+
+    public void setEmploymentMonths(int employmentMonths) {
+        this.employmentMonths = employmentMonths;
+    }
+
     private final List<String> violations = new ArrayList<>();
 
     public String getRequestId() {
@@ -96,5 +106,9 @@ public class LoanApplicationFact {
 
     public BigDecimal getMaxAffordableLoan() {
         return monthlyIncome.multiply(BigDecimal.valueOf(24));
+    }
+
+    public BigDecimal getHighRiskMaxAffordableLoan() {
+        return monthlyIncome.multiply(BigDecimal.valueOf(12));
     }
 }

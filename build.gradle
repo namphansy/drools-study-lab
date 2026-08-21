@@ -31,6 +31,7 @@ dependencies {
     implementation platform("org.drools:drools-bom:${droolsVersion}")
     implementation 'org.drools:drools-core'
     implementation 'org.drools:drools-compiler'
+    implementation 'org.drools:drools-decisiontables'
     implementation 'org.drools:drools-mvel'
     implementation 'org.drools:drools-model-compiler'
 
